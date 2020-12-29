@@ -1,10 +1,8 @@
 using log4net;
 using log4net.Config;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -13,7 +11,7 @@ using System.Web.Routing;
 
 namespace SimpleCRUD
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -28,6 +26,9 @@ namespace SimpleCRUD
             LogManager.GetLogger("SysLog").Info("Application Start.");
 
             #endregion
+            
+            //創建IoC容器
+            AutofacConfig.Register(this.Application);
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -36,6 +37,34 @@ namespace SimpleCRUD
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            try
+            {
+                string msg = exception.Message;
+                if (exception.InnerException != null)
+                    msg += Environment.NewLine + "InnerException: " + exception.InnerException.Message;
+                LogManager.GetLogger("SysLog").Fatal(msg);
+                HttpException httpException = (HttpException)exception;
+                int httpCode = httpException.GetHttpCode();
+                if (Request.HttpMethod.ToUpper() == "GET")
+                    Response.Redirect("~/Home/ErrorPage/" + httpCode.ToString());
+                else
+                    Response.Redirect("~/Error/Status/" + httpCode.ToString());
+            }
+            catch { Response.Redirect("~/Error/NotFound"); }
+            finally
+            {
+                Server.ClearError();
+            }
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+            LogManager.GetLogger("SysLog").Info("Application End.");
         }
     }
 }

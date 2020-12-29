@@ -72,9 +72,13 @@
   <ItemGroup>
     <Compile Include="Attribute\StringValueAttribute.cs" />
     <Compile Include="Attribute\TaiwanIdentityCardNumber.cs" />
+    <Compile Include="DTO\BaseReqResult.cs" />
+    <Compile Include="DTO\Message.cs" />
     <Compile Include="DTO\PaginatedList.cs" />
+    <Compile Include="DTO\RetCode.cs" />
     <Compile Include="Enum\CommonCode.cs" />
     <Compile Include="Enum\EnvType.cs" />
+    <Compile Include="Enum\MsgType.cs" />
     <Compile Include="ExtFunction\Enum.cs" />
     <Compile Include="ExtFunction\Object.cs" />
     <Compile Include="ExtFunction\SecureString.cs" />

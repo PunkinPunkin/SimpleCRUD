@@ -1,6 +1,6 @@
 ﻿using Shared;
+using Shared.DTO;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace DTO.ReqResult
 {
@@ -24,6 +24,13 @@ namespace DTO.ReqResult
         public BasicResult(CommonCode commonCode)
         {
             Code = commonCode.ToResCode();
+            Message = commonCode.ToStringValue();
+        }
+
+        public BasicResult(RetCode retCode)
+        {
+            Code = retCode.ReturnCode;
+            Message = retCode.MessageText;
         }
     }
 
@@ -37,6 +44,7 @@ namespace DTO.ReqResult
 
         public Result() : base() { }
         public Result(CommonCode commonCode) : base(commonCode) { }
+        public Result(RetCode retCode) : base(retCode) { }
     }
 
     /// <summary>
@@ -49,6 +57,7 @@ namespace DTO.ReqResult
 
         public ResultList() : base() { }
         public ResultList(CommonCode commonCode) : base(commonCode) { }
+        public ResultList(RetCode retCode) : base(retCode) { }
     }
 
     /// <summary>

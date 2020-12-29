@@ -34,6 +34,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -51,6 +54,7 @@
     <Compile Include="DB\MTC\PoliceStation.cs" />
     <Compile Include="DB\MTC\SexCode.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Enum\ActionType.cs" />
     <Compile Include="Enum\DbName.cs" />
     <Compile Include="Enum\MTC\EscortUnitType.cs" />
     <Compile Include="Enum\MTC\PsyHistoryType.cs" />
@@ -59,6 +63,19 @@
     <Compile Include="Enum\Platform.cs" />
     <Compile Include="Enum\SexType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReqInParm\FileReqInParm.cs" />
+    <Compile Include="ReqInParm\General\GenFourReqInParm.cs" />
+    <Compile Include="ReqInParm\General\GenOneReqInParm.cs" />
+    <Compile Include="ReqInParm\General\GenOneStringReqInParm.cs" />
+    <Compile Include="ReqInParm\General\GenThreeReqInParm.cs" />
+    <Compile Include="ReqInParm\General\GenTwoReqInParm.cs" />
+    <Compile Include="ReqInParm\MTC\MentalillnessToHospitalReqInParm.cs" />
+    <Compile Include="ReqInParm\MTC\PoliceStationReqInParm.cs" />
+    <Compile Include="ReqResult\General\GenFourReqResult.cs" />
+    <Compile Include="ReqResult\General\GenOneReqResult.cs" />
+    <Compile Include="ReqResult\General\GenOneStringReqResult.cs" />
+    <Compile Include="ReqResult\General\GenThreeReqResult.cs" />
+    <Compile Include="ReqResult\General\GenTwoReqResult.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ReqResult\介接回傳參數.cs" />
   </ItemGroup>

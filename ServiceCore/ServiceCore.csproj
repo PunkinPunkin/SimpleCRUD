@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62F65413-1C57-4C7E-83D3-E161D44F2AF2}</ProjectGuid>
+    <ProjectGuid>{9CFDC28A-E28D-47B0-B4DF-2D794F60A582}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibServer</RootNamespace>
-    <AssemblyName>LibServer</AssemblyName>
+    <RootNamespace>ServiceCore</RootNamespace>
+    <AssemblyName>ServiceCore</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -85,25 +85,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase\UnitOfWork.cs" />
-    <Compile Include="DataBase\IUnitOfWork.cs" />
-    <Compile Include="IAction.cs" />
-    <Compile Include="IComponent.cs" />
+    <Compile Include="BusinessLogic\MTC\BusinessLogicMTC.cs" />
+    <Compile Include="BusinessLogic\MTC\IBusinessLogicMTC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ADbActionExecutor.cs" />
-    <Compile Include="Repository\IRepositoryAction.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Service\ABusinessLogic.cs" />
-    <Compile Include="Service\AService.cs" />
-    <Compile Include="Service\IBusinessLogic.cs" />
-    <Compile Include="Service\IService.cs" />
+    <Compile Include="Services\MTC\ServiceMTC.cs" />
+    <Compile Include="Services\MTC\IServiceMTC.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{ec9843dc-a2f1-4a48-8f92-e9d1805134ea}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{a066227d-6965-4afe-a82a-3a4716d985f6}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibServer\LibServer.csproj">
+      <Project>{62f65413-1c57-4c7e-83d3-e161d44f2af2}</Project>
+      <Name>LibServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryCore\RepositoryCore.csproj">
+      <Project>{7aa69495-32c2-4c3f-a8ea-c5df12f74e2d}</Project>
+      <Name>RepositoryCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{2290afa8-86c0-4993-83ff-dd296426f60a}</Project>
       <Name>Shared</Name>
